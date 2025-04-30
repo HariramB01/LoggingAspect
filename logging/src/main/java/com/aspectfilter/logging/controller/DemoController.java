@@ -48,4 +48,12 @@ public class DemoController {
     }
 
 
+    @LoggingAspect
+    @RequestMapping("/demo5")
+    public ResponseEntity<String> demo5(HttpServletRequest request, @RequestParam String name, @RequestParam("id") int id) {
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        return ResponseEntity.ok().body(demoService.getFourthMessage());
+    }
+
 }
