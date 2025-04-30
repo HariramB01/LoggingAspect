@@ -5,7 +5,9 @@ import com.aspectfilter.logging.aspect.LoggingAspect;
 import com.aspectfilter.logging.service.DemoService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,5 +38,14 @@ public class DemoController {
     public ResponseEntity<String> demo3(HttpServletRequest request) {
         return ResponseEntity.ok().body(demoService.getThirdMessage());
     }
+
+    @LoggingAspect
+    @RequestMapping("/demo4")
+    public ResponseEntity<String> demo4(HttpServletRequest request, @RequestParam String name, @RequestParam("id") int id) {
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        return ResponseEntity.ok().body(demoService.getFourthMessage());
+    }
+
 
 }

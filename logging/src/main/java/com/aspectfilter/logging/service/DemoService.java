@@ -18,4 +18,7 @@ public class DemoService {
         return "Third message from DemoService!";
     }
 
+    public String getFourthMessage() {
+        return "Fourth message from DemoService!";
+    }
 }
